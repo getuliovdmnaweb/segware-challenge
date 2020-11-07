@@ -5,6 +5,7 @@ import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { Provider } from "react-redux";
 import { createReduxStore } from "./redux";
+import { black_pearl } from "./utils/colors";
 
 export default function App() {
   const store = createReduxStore();
