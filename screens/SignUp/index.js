@@ -1,0 +1,65 @@
+import React, { useState } from "react";
+import { View, Text, Platform, KeyboardAvoidingView } from "react-native";
+import { Button, Input } from "../../components";
+import styles from "./styles";
+
+const SignUp = ({ navigation }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const signUp = () => {};
+  const goBack = () => {
+    navigation.goBack();
+  };
+
+  const signUpCard = () => (
+    <View style={styles.signUpCard}>
+      <Text data-test="component-title" style={styles.title}>
+        Sign up
+      </Text>
+      <Input
+        data-test="component-username-input"
+        inputStyle={{ marginBottom: 15 }}
+        label="Username"
+        placeholder="Type your username"
+        inputValue={username}
+        setInputValue={setUsername}
+      />
+      <Input
+        data-test="component-password-input"
+        inputStyle={{ marginBottom: 65 }}
+        label="Password"
+        placeholder="Type your password"
+        secureTextEntry={true}
+        inputValue={password}
+        setInputValue={setPassword}
+      />
+
+      <Button
+        data-test="component-sign-up-button"
+        title="Sign up"
+        onPress={signUp}
+      />
+      <Text style={styles.or}>or</Text>
+      <Button
+        data-test="component-go-back-button"
+        title="Go back"
+        type="outline"
+        onPress={goBack}
+      />
+    </View>
+  );
+
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS == "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
+      <View style={styles.header} />
+      <View style={styles.body} />
+      {signUpCard()}
+    </KeyboardAvoidingView>
+  );
+};
+
+export default SignUp;
