@@ -4,7 +4,7 @@ import { DrawerItemList, DrawerItem } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
 import { black_pearl, persian_red } from "../../../utils/colors";
 import { useDispatch } from "react-redux";
-import { SIGN_OUT } from "../../../redux/actions";
+import { signOut } from "../../../redux/actions";
 
 const DrawerContent = (props) => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const DrawerContent = (props) => {
           icon={() => <Ionicons name="md-exit" size={24} color={persian_red} />}
           label="Sign Out"
           inactiveTintColor={persian_red}
-          onPress={() => dispatch({ type: SIGN_OUT })}
+          onPress={() => dispatch(signOut())}
         />
       </View>
     </ScrollView>

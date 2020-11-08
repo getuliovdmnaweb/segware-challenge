@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { Button } from "../../components";
+import { Button, ErrorModal } from "../../components";
 import { persian_red, eclipse } from "../../utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { postFeed } from "../../redux/actions";
@@ -19,6 +19,7 @@ const windowHeight = Dimensions.get("screen").height;
 export const FeedModal = ({ closeModal }) => {
   const [text, setText] = useState("");
   const username = useSelector((state) => state.user.name);
+  const errorMessage = useSelector((state) => state.error.errorMessage);
   const dispatch = useDispatch();
 
   const onChangeText = useCallback(
@@ -58,6 +59,7 @@ export const FeedModal = ({ closeModal }) => {
         ></TextInput>
         <Button onPress={onPress} title="Send"></Button>
       </View>
+      {errorMessage !== "" ? <ErrorModal errorMessage={errorMessage} /> : null}
     </View>
   );
 };
@@ -69,10 +71,12 @@ const styles = StyleSheet.create({
     width: windowWidth,
     position: "absolute",
     opacity: 0.9,
-    paddingTop: "30%",
-    paddingHorizontal: "5%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   card: {
+    width: "90%",
+    height: "45%",
     borderRadius: 10,
     backgroundColor: "white",
     padding: 20,

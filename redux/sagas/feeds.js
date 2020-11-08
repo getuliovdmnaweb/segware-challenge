@@ -3,6 +3,7 @@ import { getFeeds, reactFeed, postFeed } from "./api";
 import {
   setFeeds,
   closeModal,
+  setErrorMessage,
   FETCH_FEEDS,
   REACT_FEED,
   POST_FEED,
@@ -42,7 +43,9 @@ function* postFeedSaga(action) {
     yield put(setFeeds(feeds));
     yield put(closeModal());
   } catch (e) {
-    console.log(e.message);
+    yield put(
+      setErrorMessage(`Invalid Message Content: ${e.message.slice(-3)}`)
+    );
   }
 }
 
