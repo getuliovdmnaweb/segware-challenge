@@ -16,8 +16,14 @@ React-Navigation
 
 Stylesheet e Flexbox
 
+### Link para o APK
+O link para o apk foi gerado através do Expo. Somente o APK par ao Android.
 
-### Rodar o Projeto
+https://expo.io/artifacts/df4a0488-5f9f-415a-b23e-a957a5304e64
+
+Caso não consiga tente as instruções abaixo:
+
+### Instalar o App
 Instale as Dependências:
 ```
 yarn install
