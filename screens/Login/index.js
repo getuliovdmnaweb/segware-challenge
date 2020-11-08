@@ -1,11 +1,18 @@
-import React, { useState } from "react";
-import { View, Text } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 import { Button, Input } from "../../components";
 import styles from "./styles";
+import { useDispatch, useSelector } from "react-redux";
+import { signIn, setIsLoging } from "../../redux/actions";
+import { persian_red } from "../../utils/colors";
 
 const Login = ({ navigation }) => {
+  const dispatch = useDispatch();
+
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+
+  const isLoging = useSelector((state) => state.user.isLoging);
 
   const signUp = async () => {
     navigation.navigate("SignUp");
@@ -15,7 +22,14 @@ const Login = ({ navigation }) => {
     navigation.navigate("ForgotPassword");
   };
 
-  const signIn = () => {};
+  const onSignIn = () => {
+    const user = {
+      username: username,
+      password: password,
+    };
+    dispatch(signIn(user));
+    dispatch(setIsLoging());
+  };
 
   const loginCard = () => (
     <View style={styles.loginCard}>
@@ -49,7 +63,7 @@ const Login = ({ navigation }) => {
       <Button
         data-test="component-sign-in-button"
         title="Sign in"
-        onPress={signIn}
+        onPress={onSignIn}
       />
       <Text style={styles.or}>or</Text>
       <Button
@@ -65,7 +79,17 @@ const Login = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.header} />
       <View style={styles.body}></View>
-      {loginCard()}
+      {!isLoging ? (
+        loginCard()
+      ) : (
+        <View style={styles.activityIndicator}>
+          <ActivityIndicator
+            size="large"
+            color={persian_red}
+            animating={true}
+          />
+        </View>
+      )}
     </View>
   );
 };

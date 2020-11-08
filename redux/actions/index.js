@@ -7,6 +7,16 @@ export {
   clearPassword,
   SIGN_UP,
   signUp,
+  SIGN_IN,
+  signIn,
+  SET_IS_LOGING,
+  setIsLoging,
+  SET_FINISHED_LOGING,
+  setFinishedLoging,
+  SET_TOKEN,
+  setToken,
+  SET_USERNAME,
+  setUserName,
 } from "./user";
 
 export {
@@ -15,3 +25,5 @@ export {
   CLEAR_ERROR_MESSAGE,
   clearErrorMessage,
 } from "./error";
+
+export { FETCH_FEEDS, fetchFeeds } from "./feeds";

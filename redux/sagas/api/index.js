@@ -11,3 +11,16 @@ export const signUp = async (user) => {
   const response = await axios.post(SIGN_UP, user);
   return response.data;
 };
+
+export const signIn = async (user) => {
+  const response = await axios.post(SIGN_IN, user);
+  return response.data;
+};
+
+export const getFeeds = async (token) => {
+  const headers = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const response = await axios.get(FEEDS, headers);
+  return response.data;
+};
