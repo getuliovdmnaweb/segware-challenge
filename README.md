@@ -27,6 +27,20 @@ Caso não consiga tente as instruções abaixo para instalar em modo Debug:
 
 ### Instalar o App
 Instale as Dependências:
+Primeiramente certifique-se de que tem o Expo-Cli na sua maquina.
+Para isso use:
+
+```
+npm install --global expo-cli 
+```
+
+ou
+
+```
+yarn global add expo-cli 
+```
+Após isso entre no diretório do projeto e instale as dependências com:
+
 ```
 yarn install
 ```
