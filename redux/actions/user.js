@@ -20,3 +20,8 @@ export const clearPassword = () => {
     type: CLEAR_PASSWORD,
   };
 };
+
+export const SIGN_UP = "user/SIGN_UP";
+export const signUp = (user, navigation) => {
+  return { type: SIGN_UP, payload: { user, navigation } };
+};

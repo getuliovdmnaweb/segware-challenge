@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 import { View, Text, Platform, KeyboardAvoidingView } from "react-native";
-import { Button, Input } from "../../components";
+import { useDispatch, useSelector } from "react-redux";
+import { Button, Input, ErrorModal } from "../../components";
 import styles from "./styles";
+import { signUp } from "../../redux/actions";
 
 const SignUp = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const errorMessage = useSelector((state) => state.error.errorMessage);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const signUp = () => {};
+  const onSignUp = () => {
+    const user = {
+      username,
+      password,
+    };
+    dispatch(signUp(user, navigation));
+  };
   const goBack = () => {
     navigation.goBack();
   };
@@ -38,7 +48,7 @@ const SignUp = ({ navigation }) => {
       <Button
         data-test="component-sign-up-button"
         title="Sign up"
-        onPress={signUp}
+        onPress={onSignUp}
       />
       <Text style={styles.or}>or</Text>
       <Button
@@ -58,6 +68,7 @@ const SignUp = ({ navigation }) => {
       <View style={styles.header} />
       <View style={styles.body} />
       {signUpCard()}
+      {errorMessage !== "" ? <ErrorModal errorMessage={errorMessage} /> : null}
     </KeyboardAvoidingView>
   );
 };

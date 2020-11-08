@@ -5,6 +5,8 @@ export {
   setPassword,
   CLEAR_PASSWORD,
   clearPassword,
+  SIGN_UP,
+  signUp,
 } from "./user";
 
 export {
