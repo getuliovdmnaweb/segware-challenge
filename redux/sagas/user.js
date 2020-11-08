@@ -1,16 +1,18 @@
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest, take } from "redux-saga/effects";
 import { forgotPassword, signUp, signIn } from "./api";
 import { requestMiddleware } from "./api/helpers";
 import {
   FORGOT_PASSWORD,
   SIGN_UP,
   SIGN_IN,
+  CLEAR_ERROR_MESSAGE,
   fetchFeeds,
   setFinishedLoging,
   setUserName,
   setToken,
   setPassword,
   setErrorMessage,
+  setIsLoging,
 } from "../actions";
 
 function* forgotPasswordSaga(action) {
@@ -38,14 +40,19 @@ function* signUpUser(action) {
 
 function* signInUser(action) {
   try {
-    const { user } = action.payload;
+    const user = action.payload;
     const token = yield call(() => signIn(user));
     yield put(setToken(token));
     yield put(setUserName(user));
     yield put(fetchFeeds());
     yield put(setFinishedLoging());
   } catch (e) {
-    console.log("Erro Login", e);
+    yield put(
+      setErrorMessage(`Invalid Username or Password: ${e.message.slice(-3)}`)
+    );
+    yield take(CLEAR_ERROR_MESSAGE);
+
+    yield put(setIsLoging(false));
   }
 }
 

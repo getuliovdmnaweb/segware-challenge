@@ -3,7 +3,7 @@ export const setFeeds = (feeds) => {
   return { type: SET_FEEDS, payload: feeds };
 };
 
-export const FETCH_FEEDS = "user/FETCH_FEEDS";
+export const FETCH_FEEDS = "feeds/FETCH_FEEDS";
 export const fetchFeeds = () => {
   return { type: FETCH_FEEDS };
 };

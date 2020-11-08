@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FORGOT_PASSWORD, SIGN_UP } from "./constants";
+import { FORGOT_PASSWORD, SIGN_UP, SIGN_IN, FEEDS } from "./constants";
 
 export const forgotPassword = async (username) => {
   const response = await axios.get(`${FORGOT_PASSWORD}/${username}`);

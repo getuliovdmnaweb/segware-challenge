@@ -32,8 +32,8 @@ export const signIn = (user) => {
 };
 
 export const SET_IS_LOGING = "user/SET_IS_LOGING";
-export const setIsLoging = () => {
-  return { type: SET_IS_LOGING };
+export const setIsLoging = (isLoging) => {
+  return { type: SET_IS_LOGING, payload: isLoging };
 };
 
 export const SET_FINISHED_LOGING = "user/SET_FINISHED_LOGING";

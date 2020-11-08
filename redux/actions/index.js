@@ -26,4 +26,4 @@ export {
   clearErrorMessage,
 } from "./error";
 
-export { FETCH_FEEDS, fetchFeeds } from "./feeds";
+export { FETCH_FEEDS, fetchFeeds, SET_FEEDS, setFeeds } from "./feeds";

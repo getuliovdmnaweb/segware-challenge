@@ -3,10 +3,14 @@ import {
   CLEAR_PASSWORD,
   SET_IS_LOGING,
   SET_FINISHED_LOGING,
+  SET_USERNAME,
+  SET_TOKEN,
 } from "../actions";
 const initialState = {
   password: "",
   isLoging: false,
+  name: "",
+  finishedLoging: false,
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -21,13 +25,23 @@ export const userReducer = (state = initialState, action) => {
     case SET_IS_LOGING:
       return {
         ...state,
-        isLoging: true,
+        isLoging: action.payload,
       };
     case SET_FINISHED_LOGING:
       return {
         ...state,
         isLoging: false,
         finishedLoging: action.payload,
+      };
+    case SET_USERNAME:
+      return {
+        ...state,
+        name: action.payload,
+      };
+    case SET_TOKEN:
+      return {
+        ...state,
+        token: action.payload,
       };
     default:
       return state;

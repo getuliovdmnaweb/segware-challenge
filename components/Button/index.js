@@ -53,7 +53,7 @@ const useStyles = (disabled) =>
       alignItems: "center",
       backgroundColor: persian_red,
       borderRadius: 5,
-      opacity: disabled ? 0.4 : 1,
+      opacity: disabled ? 0.5 : 1,
     },
     pressableOutline: {
       padding: 10,
@@ -62,7 +62,7 @@ const useStyles = (disabled) =>
       borderRadius: 5,
       borderWidth: 1,
       borderColor: persian_red,
-      opacity: disabled ? 0.4 : 1,
+      opacity: disabled ? 0.5 : 1,
     },
     text: { color: "white", fontWeight: "bold", fontSize: 16 },
     textOutline: { color: persian_red, fontWeight: "bold", fontSize: 16 },

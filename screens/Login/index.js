@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
-import { Button, Input } from "../../components";
+import { View, Text, ActivityIndicator } from "react-native";
+import { Button, Input, ErrorModal } from "../../components";
 import styles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn, setIsLoging } from "../../redux/actions";
@@ -11,7 +11,7 @@ const Login = ({ navigation }) => {
 
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
+  const errorMessage = useSelector((state) => state.error.errorMessage);
   const isLoging = useSelector((state) => state.user.isLoging);
 
   const signUp = async () => {
@@ -28,7 +28,7 @@ const Login = ({ navigation }) => {
       password: password,
     };
     dispatch(signIn(user));
-    dispatch(setIsLoging());
+    dispatch(setIsLoging(true));
   };
 
   const loginCard = () => (
@@ -64,6 +64,7 @@ const Login = ({ navigation }) => {
         data-test="component-sign-in-button"
         title="Sign in"
         onPress={onSignIn}
+        disabled={username && password ? false : true}
       />
       <Text style={styles.or}>or</Text>
       <Button
@@ -90,6 +91,7 @@ const Login = ({ navigation }) => {
           />
         </View>
       )}
+      {errorMessage !== "" ? <ErrorModal errorMessage={errorMessage} /> : null}
     </View>
   );
 };
