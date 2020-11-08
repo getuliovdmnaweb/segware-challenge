@@ -95,6 +95,11 @@ const styles = StyleSheet.create({
     padding: 15,
     marginBottom: 20,
     justifyContent: "space-between",
+    shadowOffset: { width: 5, height: 10 },
+    shadowColor: "black",
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    elevation: 5,
   },
   header: {
     flexDirection: "row",

@@ -1,25 +1,36 @@
 import React, { useCallback } from "react";
 import { View, FlatList } from "react-native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FeedCard } from "../../components";
 import { Header } from "../../components";
+import { openModal, closeModal } from "../../redux/actions";
 import { whisper } from "../../utils/colors";
+import { FeedModal } from "./FeedModal";
 
 const Home = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const modalVisible = useSelector((state) => state.feeds.modalVisible);
+
   const feedsArray = useSelector((state) => state.feeds.feedsArray);
 
   const toggleDrawer = useCallback(() => {
     navigation.toggleDrawer();
   });
 
-  const openModal = useCallback(() => {});
+  const onOpenModal = useCallback(() => {
+    dispatch(openModal());
+  });
+
+  const onCloseModal = useCallback(() => {
+    dispatch(closeModal());
+  });
 
   return (
     <View style={{ flex: 1 }}>
       <Header
         toggleDrawer={toggleDrawer}
         title="Feeds"
-        openModal={openModal}
+        openModal={onOpenModal}
         iconRight={true}
       />
       <View
@@ -47,6 +58,7 @@ const Home = ({ navigation }) => {
           keyExtractor={(item) => `${item.id}`}
         />
       </View>
+      {modalVisible ? <FeedModal closeModal={onCloseModal} /> : null}
     </View>
   );
 };

@@ -1,6 +1,12 @@
 import { call, put, takeLatest, select } from "redux-saga/effects";
-import { getFeeds, reactFeed } from "./api";
-import { setFeeds, FETCH_FEEDS, REACT_FEED } from "../actions";
+import { getFeeds, reactFeed, postFeed } from "./api";
+import {
+  setFeeds,
+  closeModal,
+  FETCH_FEEDS,
+  REACT_FEED,
+  POST_FEED,
+} from "../actions";
 
 function* fetchFeeds() {
   try {
@@ -8,7 +14,7 @@ function* fetchFeeds() {
     const feeds = yield call(() => getFeeds(token));
     yield put(setFeeds(feeds));
   } catch (e) {
-    yield put({ type: "USER_FETCH_FAILED", message: e.message });
+    console.log(e.message);
   }
 }
 
@@ -27,7 +33,21 @@ function* reactFeedSaga(action) {
   }
 }
 
+function* postFeedSaga(action) {
+  try {
+    const token = yield select((state) => state.user.token);
+    const content = action.payload;
+    const response = yield call(() => postFeed(content, token));
+    const feeds = yield call(() => getFeeds(token));
+    yield put(setFeeds(feeds));
+    yield put(closeModal());
+  } catch (e) {
+    console.log(e.message);
+  }
+}
+
 export function* watchFeeds() {
   yield takeLatest(FETCH_FEEDS, fetchFeeds);
   yield takeLatest(REACT_FEED, reactFeedSaga);
+  yield takeLatest(POST_FEED, postFeedSaga);
 }

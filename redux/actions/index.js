@@ -33,4 +33,10 @@ export {
   setFeeds,
   REACT_FEED,
   reactFeed,
+  CLOSE_FEEDS_MODAL,
+  closeModal,
+  OPEN_FEEDS_MODAL,
+  openModal,
+  POST_FEED,
+  postFeed,
 } from "./feeds";

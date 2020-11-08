@@ -5,6 +5,7 @@ import {
   SIGN_IN,
   FEEDS,
   REACT_FEED,
+  POST_FEED,
 } from "./constants";
 
 export const forgotPassword = async (username) => {
@@ -37,4 +38,12 @@ export const reactFeed = async (feed, token) => {
   };
   const response = await axios.post(REACT_FEED, feed, headers);
   return response;
+};
+
+export const postFeed = async (content, token) => {
+  const headers = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const response = await axios.post(POST_FEED, content, headers);
+  return response.data;
 };

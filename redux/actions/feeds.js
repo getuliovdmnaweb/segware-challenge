@@ -15,3 +15,21 @@ export const reactFeed = (feed) => {
     payload: feed,
   };
 };
+
+export const CLOSE_FEEDS_MODAL = "feeds/CLOSE_FEEDS_MODAL";
+export const closeModal = () => {
+  return {
+    type: CLOSE_FEEDS_MODAL,
+  };
+};
+export const OPEN_FEEDS_MODAL = "feeds/OPEN_FEEDS_MODAL";
+export const openModal = () => {
+  return {
+    type: OPEN_FEEDS_MODAL,
+  };
+};
+
+export const POST_FEED = "feeds/POST_FEED";
+export const postFeed = (content) => {
+  return { type: POST_FEED, payload: content };
+};
