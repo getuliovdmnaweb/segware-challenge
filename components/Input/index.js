@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, TextInput, StyleSheet } from "react-native";
 import { black_pearl, whisper } from "../../utils/colors";
+import IconButton from "../IconButton";
 
 const Input = ({
   inputValue,
@@ -12,6 +13,7 @@ const Input = ({
   placeholder,
   secureTextEntry,
 }) => {
+  const [showPassword, setShowPassword] = useState(false);
   return (
     <View style={{ ...inputStyle }}>
       <Text
@@ -20,14 +22,25 @@ const Input = ({
       >
         {label}
       </Text>
-      <TextInput
-        data-test="component-text-input"
-        style={{ ...styles.textInput, ...textInputStyle }}
-        value={inputValue}
-        placeholder={placeholder}
-        secureTextEntry={secureTextEntry}
-        onChangeText={(text) => setInputValue(text)}
-      />
+      <View style={styles.textInputContainer}>
+        <TextInput
+          data-test="component-text-input"
+          style={{ ...styles.textInput, ...textInputStyle }}
+          value={inputValue}
+          placeholder={placeholder}
+          secureTextEntry={secureTextEntry && !showPassword}
+          onChangeText={(text) => setInputValue(text)}
+          underlineColorAndroid={whisper}
+        />
+        {secureTextEntry ? (
+          <IconButton
+            iconName={showPassword ? "ios-eye-off" : "ios-eye"}
+            iconSize={24}
+            iconColor={black_pearl}
+            onPress={() => setShowPassword(!showPassword)}
+          />
+        ) : null}
+      </View>
     </View>
   );
 };
@@ -40,11 +53,22 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   textInput: {
+    flex: 3,
     backgroundColor: whisper,
     height: 40,
     borderRadius: 5,
     paddingHorizontal: 10,
     fontFamily: "monospace",
+    color: black_pearl,
+    fontWeight: "bold",
+  },
+  textInputContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    backgroundColor: whisper,
+    borderRadius: 5,
+    paddingRight: 10,
   },
 });
 
