@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import { View, Text, Platform, KeyboardAvoidingView } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Input } from "../../components";
+import { Button, Input, ErrorModal } from "../../components";
 import styles from "./styles";
 import { whisper } from "../../utils/colors";
-import { forgotPassword } from "../../redux/actions";
+import { forgotPassword, clearPassword } from "../../redux/actions";
 const ForgotPassword = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState("");
   const password = useSelector((state) => state.user.password);
+  const errorMessage = useSelector((state) => state.error.errorMessage);
 
   const getPassword = () => {
     dispatch(forgotPassword(username));
   };
 
   const goBack = () => {
+    dispatch(clearPassword());
     navigation.goBack();
   };
 
@@ -66,6 +68,7 @@ const ForgotPassword = ({ navigation }) => {
       <View style={styles.header} />
       <View style={styles.body} />
       {forgotPasswordCard()}
+      {errorMessage !== "" ? <ErrorModal errorMessage={errorMessage} /> : null}
     </KeyboardAvoidingView>
   );
 };
