@@ -49,6 +49,7 @@ const SignUp = ({ navigation }) => {
         data-test="component-sign-up-button"
         title="Sign up"
         onPress={onSignUp}
+        disabled={username && password ? false : true}
       />
       <Text style={styles.or}>or</Text>
       <Button

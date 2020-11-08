@@ -1,5 +1,5 @@
 import { call, put, takeLatest, select } from "redux-saga/effects";
-import { getFeeds } from "../../utils/api";
+import { getFeeds } from "./api";
 import { setFeeds, FETCH_FEEDS } from "../actions";
 
 function* fetchFeeds() {

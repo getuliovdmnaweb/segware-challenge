@@ -49,6 +49,7 @@ const ForgotPassword = ({ navigation }) => {
         data-test="component-get-password-button"
         title="Get password"
         onPress={getPassword}
+        disabled={username === "" ? true : false}
       />
       <Text style={styles.or}>or</Text>
       <Button

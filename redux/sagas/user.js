@@ -20,7 +20,7 @@ function* forgotPasswordSaga(action) {
     const { data, status } = response;
     status === 200
       ? yield put(setPassword(data.password))
-      : yield put(setErrorMessage(`Request failed with status code ${status}`));
+      : yield put(setErrorMessage(`User not found: ${status}`));
   } catch (e) {
     yield put(setErrorMessage(e.message));
   }
