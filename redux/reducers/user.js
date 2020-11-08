@@ -5,6 +5,7 @@ import {
   SET_FINISHED_LOGING,
   SET_USERNAME,
   SET_TOKEN,
+  SIGN_OUT,
 } from "../actions";
 const initialState = {
   password: "",
@@ -43,6 +44,8 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         token: action.payload,
       };
+    case SIGN_OUT:
+      return initialState;
     default:
       return state;
   }

@@ -17,6 +17,8 @@ export {
   setToken,
   SET_USERNAME,
   setUserName,
+  SIGN_OUT,
+  signOut,
 } from "./user";
 
 export {

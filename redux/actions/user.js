@@ -50,3 +50,8 @@ export const SET_USERNAME = "user/SET_USERNAME";
 export const setUserName = (user) => {
   return { type: SET_USERNAME, payload: user.username };
 };
+
+export const SIGN_OUT = "user/SIGN_OUT";
+export const signOut = () => {
+  return { type: SIGN_OUT };
+};
