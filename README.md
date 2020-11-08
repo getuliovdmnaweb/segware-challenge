@@ -21,7 +21,9 @@ O link para o apk foi gerado através do Expo. Somente o APK par ao Android.
 
 https://expo.io/artifacts/df4a0488-5f9f-415a-b23e-a957a5304e64
 
-Caso não consiga tente as instruções abaixo:
+Após baixar o APK basta você arrastá-lo para algum emulador ou instalar no seu celular.
+
+Caso não consiga tente as instruções abaixo para instalar em modo Debug:
 
 ### Instalar o App
 Instale as Dependências:
