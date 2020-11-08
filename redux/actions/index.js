@@ -26,4 +26,11 @@ export {
   clearErrorMessage,
 } from "./error";
 
-export { FETCH_FEEDS, fetchFeeds, SET_FEEDS, setFeeds } from "./feeds";
+export {
+  FETCH_FEEDS,
+  fetchFeeds,
+  SET_FEEDS,
+  setFeeds,
+  REACT_FEED,
+  reactFeed,
+} from "./feeds";

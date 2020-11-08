@@ -4,3 +4,4 @@ export const FORGOT_PASSWORD = `${BASE_URL}/forgot-password`;
 export const SIGN_UP = `${BASE_URL}/sign-up`;
 export const SIGN_IN = `${BASE_URL}/sign-in`;
 export const FEEDS = `${BASE_URL}/feeds`;
+export const REACT_FEED = `${BASE_URL}/reaction`;
