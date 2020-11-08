@@ -1,14 +1,15 @@
 import React from "react";
-import { Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, Pressable, StyleSheet } from "react-native";
 import { persian_red } from "../../utils/colors";
 
 const Button = ({ title, onPress, touchableStyle, textStyle, type }) => {
   if (type === "outline") {
     return (
-      <TouchableOpacity
+      <Pressable
         data-test="component-button-outline"
-        style={{ ...styles.touchableOpacityOutline, ...touchableStyle }}
+        style={{ ...styles.PressableOutline, ...touchableStyle }}
         onPress={onPress}
+        android_ripple={{ color: persian_red }}
       >
         <Text
           data-test="component-title-outline"
@@ -16,14 +17,15 @@ const Button = ({ title, onPress, touchableStyle, textStyle, type }) => {
         >
           {title}
         </Text>
-      </TouchableOpacity>
+      </Pressable>
     );
   }
   return (
-    <TouchableOpacity
+    <Pressable
       data-test="component-button-primary"
-      style={{ ...styles.touchableOpacity, ...touchableStyle }}
+      style={{ ...styles.Pressable, ...touchableStyle }}
       onPress={onPress}
+      android_ripple={{ color: "white" }}
     >
       <Text
         data-test="component-title-primary"
@@ -31,18 +33,18 @@ const Button = ({ title, onPress, touchableStyle, textStyle, type }) => {
       >
         {title}
       </Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
-  touchableOpacity: {
+  Pressable: {
     padding: 10,
     alignItems: "center",
     backgroundColor: persian_red,
     borderRadius: 5,
   },
-  touchableOpacityOutline: {
+  PressableOutline: {
     padding: 10,
     alignItems: "center",
     backgroundColor: "white",

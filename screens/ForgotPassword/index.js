@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { View, Text, Platform, KeyboardAvoidingView } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Input } from "../../components";
 import styles from "./styles";
 import { whisper } from "../../utils/colors";
-
+import { forgotPassword } from "../../redux/actions";
 const ForgotPassword = ({ navigation }) => {
-  const [username, setUsername] = useState("");
-  const password = "Password";
+  const dispatch = useDispatch();
 
-  const getPassword = () => {};
+  const [username, setUsername] = useState("");
+  const password = useSelector((state) => state.user.password);
+
+  const getPassword = () => {
+    dispatch(forgotPassword(username));
+  };
+
   const goBack = () => {
     navigation.goBack();
   };
