@@ -27,6 +27,7 @@ Depois disso inicie o projeto com:
 yarn start
 ```
 Para poder rodar o projeto basta você baixar o aplicativo do expo nas Stores e escanear o QrCode que estará disponivel no terminal.
+Alternativamente se tiver algum Emulador do Android instalado na sua máquina basta apertar 'a' no terminal e o expo instalará no seu emulador o app.
 
 ### Rodar os Testes
 ```
